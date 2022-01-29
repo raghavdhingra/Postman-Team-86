@@ -1,36 +1,36 @@
-import React from "react";
-import Link from "next/link";
-import { Navbar, Nav } from "react-bootstrap";
+import React from 'react';
+import Link from 'next/link';
+import { Navbar, Nav } from 'react-bootstrap';
 function Navbars() {
   return (
-    <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand='sm' bg='dark' variant='dark'>
       <Navbar.Brand>
-        <Link href="/">
-          <p className="light font-weight-bolder">DTC</p>
+        <Link href='/'>
+          <p className='light font-weight-bolder'>DTC</p>
         </Link>
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto">
+      <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+      <Navbar.Collapse id='responsive-navbar-nav'>
+        <Nav className='mr-auto'>
           <Nav.Link>
-            <Link href="/">
-              <p className="nav-link text-warning">Home</p>
+            <Link href='/'>
+              <p className='nav-link text-warning'>Home</p>
             </Link>
           </Nav.Link>
 
           <Nav.Link>
-            <Link href="/getbus">
-              <p className="nav-link text-warning">Get All Buses</p>
+            <Link href='/getbus'>
+              <p className='nav-link text-warning'>Get All Buses</p>
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link href="/searchbus">
-              <p className="nav-link text-warning">Search Bus</p>
+            <Link href='/searchbus'>
+              <p className='nav-link text-warning'>Search Bus</p>
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link href="/Searchstations">
-              <p className="nav-link text-warning">Search Station</p>
+            <Link href='/Searchstations'>
+              <p className='nav-link text-warning'>Search Station</p>
             </Link>
           </Nav.Link>
 

@@ -1,12 +1,12 @@
-const router = require("express").Router();
-const Bus = require("../schema/busSchema");
+const router = require('express').Router();
+const Bus = require('../schema/busSchema');
 
 router
-  .route("/")
+  .route('/')
   .get((req, res) => {
     let arr = [];
     Bus.find({})
-      .select("busStations -_id")
+      .select('busStations -_id')
       .then((result) => {
         result.forEach((item, index) => {
           arr = [...arr, ...item.busStations];
@@ -27,7 +27,7 @@ router
     // res.json({req});
 
     Bus.find({ busStations: req.body.busStation })
-      .select("busNumber -_id")
+      .select('busNumber -_id')
       .then((result) => {
         // console.log(result)
         res.json({ result });
