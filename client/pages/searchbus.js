@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import Layout from '../components/Layout';
-import axios from 'axios';
-import { Jumbotron, Spinner } from 'react-bootstrap';
-import HEAD from 'next/head';
+import React, { useState, useEffect } from "react";
+import Layout from "../components/Layout";
+import axios from "axios";
+import { Jumbotron, Spinner } from "react-bootstrap";
+import HEAD from "next/head";
 
 function searchbus() {
-  const [busno, setBusno] = useState('');
+  const [busno, setBusno] = useState("");
   const [data, setData] = useState([]);
   const [busdata, setBusdata] = useState([]);
   const [clicked, setClick] = useState(false);
@@ -18,7 +18,7 @@ function searchbus() {
       busNumber: busno,
     };
 
-    axios.post('http://localhost:4000/getbus', body).then((res) => {
+    axios.post("https://dtc-server.herokuapp.com/getbus", body).then((res) => {
       setClick(false);
       setBusdata(res.data);
     });
@@ -26,7 +26,7 @@ function searchbus() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:4000/searchbus')
+      .get("https://dtc-server.herokuapp.com/searchbus")
       .then((result) => setData(result.data));
   }, [1]);
 
@@ -39,25 +39,25 @@ function searchbus() {
   return (
     <Layout>
       <HEAD>
-        <title>DTC{busno.length > 0 ? '-' + busno : ''}</title>
+        <title>DTC{busno.length > 0 ? "-" + busno : ""}</title>
       </HEAD>
       <form onSubmit={handleSubmit}>
         <input
-          type='text'
-          className='form-control'
-          list={(busno + '').length >= 1 ? 'data' : ''}
+          type="text"
+          className="form-control"
+          list={(busno + "").length >= 1 ? "data" : ""}
           value={busno}
           onChange={(e) => setBusno(e.target.value)}
-          placeholder='Enter bus number'
+          placeholder="Enter bus number"
         />
-        <datalist id='data'>{datalist}</datalist>
-        <button className='btn btn-info d-block mx-auto mt-2' type='submit'>
+        <datalist id="data">{datalist}</datalist>
+        <button className="btn btn-info d-block mx-auto mt-2" type="submit">
           Submit
         </button>
       </form>
       {busdata.length !== 0 ? (
         <div>
-          <h3 className='text text-success text-center mt-2'>Bus stations</h3>
+          <h3 className="text text-success text-center mt-2">Bus stations</h3>
           <Jumbotron>
             {busdata[0] &&
               busdata[0].busStations.map((station, index) => (
@@ -66,7 +66,7 @@ function searchbus() {
           </Jumbotron>
         </div>
       ) : (
-        clicked && <Spinner animation='grow' className='d-block mx-auto mt-4' />
+        clicked && <Spinner animation="grow" className="d-block mx-auto mt-4" />
       )}
     </Layout>
   );
