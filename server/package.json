@@ -1,0 +1,26 @@
+{
+  "name": "postman-team-86",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.0.0",
+    "express-rate-limit": "^5.1.1",
+    "helmet": "^3.22.0",
+    "mongoose": "^5.9.5",
+    "mongoose-unique-validator": "^2.0.3",
+    "xss-clean": "^0.1.1"
+  }
+}
