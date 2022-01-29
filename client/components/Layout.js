@@ -1,6 +1,7 @@
 import React from 'react'
 import HEAD from 'next/head'
-
+import Navbar from './navbar'
+//import Logo from '../public/images/logo.png'
 
 function Layout(props) {
     return (
@@ -17,7 +18,7 @@ function Layout(props) {
         type = "image/x-icon"/>         
                  <title>DTC</title>       
             </HEAD>
-           
+            <Navbar/>
             
            <div className="container mt-4">
 

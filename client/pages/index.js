@@ -1,8 +1,10 @@
 import React from "react";
 import Layout from "../components/Layout";
+import Button from "react-bootstrap/Button";
 import { Row, Col, Jumbotron, Alert } from "react-bootstrap";
 import BubbleChartIcon from "@material-ui/icons/BubbleChart";
 import Link from "next/link";
+import GitHubIcon from "@material-ui/icons/GitHub";
 
 function index() {
   return (

@@ -11,6 +11,13 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 
+const Bus = require("./schema/busSchema");
+const busroute = require("./route/busroute");
+const getbus = require("./route/getbus");
+const searchbus = require("./route/searchbus");
+const searchroute = require("./route/searchroute");
+const searchstations = require("./route/searchstations");
+
 const limit = rateLimit({
   max: 100, // max requests
   windowMs: 60 * 60 * 1000, // 1 Hour
@@ -25,6 +32,12 @@ app.use("/routeName", limit);
 app.use(express.json({ limit: "10kb" }));
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use("/registerbus", busroute);
+app.use("/getbus", getbus);
+app.use("/searchbus", searchbus);
+app.use("/searchroute", searchroute);
+app.use("/searchstations", searchstations);
 
 app.get("/", (res, req) => {
   req.send("PONG");
