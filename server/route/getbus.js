@@ -1,28 +1,27 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Bus = require("../schema/busSchema");
+const Bus = require('../schema/busSchema');
 
 router
-  .route("/")
+  .route('/')
   .get((req, res) => {
-      //console.log('getbus/ get request')
+    //console.log('getbus/ get request')
     Bus.find()
-      .then(result => {
+      .then((result) => {
         res.json(result);
       })
-      .catch(err => {
+      .catch((err) => {
         res.json({
-          msg: err
+          msg: err,
         });
       });
   })
   .post((req, res) => {
-   // console.log(req.body);
     Bus.find({
-      busNumber: req.body.busNumber
+      busNumber: req.body.busNumber,
     })
-      .then(result => res.json(result))
-      .catch(err => res.json(err));
+      .then((result) => res.json(result))
+      .catch((err) => res.json(err));
   });
 
 module.exports = router;

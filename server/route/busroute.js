@@ -1,18 +1,18 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Bus = require("../schema/busSchema");
-const axios = require("axios");
-const cheerio = require("cheerio");
+const Bus = require('../schema/busSchema');
+const axios = require('axios');
+const cheerio = require('cheerio');
 
 router
-  .route("/")
+  .route('/')
   .get((req, res) => {
-    res.send("at bus ");
+    res.send('at bus ');
   })
   .post((req, res) => {
-    if (req.headers.origin !== "https://dtc-app.netlify.com") {
-      console.log("inavlid", req.headers.origin);
-      res.json({ msg: "invalid" });
+    if (req.headers.origin !== 'https://dtc-app.netlify.com') {
+      console.log('inavlid', req.headers.origin);
+      res.json({ msg: 'invalid' });
       return;
     }
     let msg = {};
@@ -28,9 +28,9 @@ router
         const $ = cheerio.load(result.data);
         let arr = [];
 
-        let val = $("#onwards-route").next();
-        val.find("tr").each((i, el) => {
-          let va = $(el).children("td").first().next().text();
+        let val = $('#onwards-route').next();
+        val.find('tr').each((i, el) => {
+          let va = $(el).children('td').first().next().text();
           arr.push(va);
         });
         arr.shift();
@@ -39,12 +39,12 @@ router
           if (err) {
             console.log(err);
             msg = {
-              status: "mongo error",
+              status: 'mongo error',
               error: err,
             };
           } else {
             msg = {
-              status: "saved",
+              status: 'saved',
             };
           }
 
@@ -53,13 +53,11 @@ router
               ...msg,
               result,
             };
-            //console.log(msg)
             res.json(msg);
           });
         });
       } catch (error) {
-        res.json({ status: "catch error", err: error });
-        //console.log(error);
+        res.json({ status: 'catch error', err: error });
       }
     };
     fetchdata();
