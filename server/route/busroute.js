@@ -10,11 +10,6 @@ router
     res.send('at bus ');
   })
   .post((req, res) => {
-    if (req.headers.origin !== 'https://dtc-app.netlify.com') {
-      console.log('inavlid', req.headers.origin);
-      res.json({ msg: 'invalid' });
-      return;
-    }
     let msg = {};
     // console.log(req.body)
     const { busNumber } = req.body;
